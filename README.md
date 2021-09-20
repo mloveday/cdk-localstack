@@ -15,7 +15,7 @@ In a terminal in `cdk`
 In another terminal in `cdk`
 - `npm run build` (compiles TS to JS)
 - `cdk synth` (checks everything & preps `cdk.out` directory)
-- `cdklocal bootstrap` (first time only?)
+- `cdklocal bootstrap` (checks for changes in stack. Required when changing infra)
 - `cdklocal deploy` (pushes changes to local docker)
 
 API can be reached via the URL outputted to console (`CDKStack.Endpoint`)
