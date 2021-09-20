@@ -13,7 +13,6 @@ In a terminal in `cdk`
 - wait for `Ready` to be shown
 
 In another terminal in `cdk`
-- `npm run build` (compiles TS to JS)
 - `cdk synth` (checks everything & preps `cdk.out` directory)
 - `cdklocal bootstrap` (checks for changes in stack. Required when changing infra)
 - `cdklocal deploy` (pushes changes to local docker)
