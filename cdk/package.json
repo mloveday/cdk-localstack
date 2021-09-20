@@ -24,6 +24,7 @@
     "@aws-cdk/aws-dynamodb": "1.119.0",
     "@aws-cdk/aws-lambda": "1.119.0",
     "@aws-cdk/core": "1.119.0",
+    "@types/aws-lambda": "^8.10.83",
     "aws-cdk": "1.119.0",
     "aws-sdk": "^2.991.0",
     "source-map-support": "^0.5.16"

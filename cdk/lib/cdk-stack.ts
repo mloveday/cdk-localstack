@@ -16,16 +16,24 @@ export class CdkStack extends cdk.Stack {
       },
     });
 
-    const helloWorldLambda = new Function(this, 'helloWorld', {
-      runtime: Runtime.NODEJS_12_X,
+    const getHelloWorldLambda = new Function(this, 'getHelloWorldLambda', {
+      runtime: Runtime.NODEJS_14_X,
       code: Code.fromAsset('lambda'),
-      handler: 'helloWorld.handler',
+      handler: 'helloWorld.get',
+    });
+
+    const postHelloWorldLambda = new Function(this, 'postHelloWorldLambda', {
+      runtime: Runtime.NODEJS_14_X,
+      code: Code.fromAsset('lambda'),
+      handler: 'helloWorld.post',
     });
 
     const api = new RestApi(this, 'myapi', {});
-    const helloWorldLambdaIntegration = new LambdaIntegration(helloWorldLambda);
-    const helloResource = api.root.addResource('hello')
-    helloResource.addMethod("GET", helloWorldLambdaIntegration)
+    const getHelloWorldLambdaIntegration = new LambdaIntegration(getHelloWorldLambda);
+    const postHelloWorldLambdaIntegration = new LambdaIntegration(postHelloWorldLambda);
+    const helloResource = api.root.addResource('hello');
+    helloResource.addMethod("GET", getHelloWorldLambdaIntegration);
+    helloResource.addMethod("POST", postHelloWorldLambdaIntegration);
     new CfnOutput(this, "Endpoint", { value: `http://localhost:4566/restapis/${api.restApiId}/prod/_user_request_${helloResource.path}` })
   }
 }
